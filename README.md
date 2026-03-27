@@ -1,5 +1,9 @@
 # Claude Code in Action — Study Repository
 
+![Progress](https://img.shields.io/badge/progress-9%2F21%20lessons-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
+
 > **Author:** [Mohamed Salem Ali](https://github.com/Mohamed-Salem-Ali)
 > **Course:** [Claude Code in Action](https://anthropic.skilljar.com/claude-code-in-action) — Anthropic Academy
 > **Started:** 2026-03-27
@@ -115,6 +119,16 @@ claude -p "add error handling to src/lib/auth.ts"
 ```
 
 See `resources/cheatsheet.md` for the full command reference.
+
+---
+
+## Contributing
+
+Corrections, improved notes, and new templates are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a PR.
+
+- Open an issue first for anything beyond a small fix
+- One concern per PR
+- Branch from `main`, name it `fix/`, `add/`, or `update/`
 
 ---
 
