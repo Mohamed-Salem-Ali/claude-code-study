@@ -1,37 +1,46 @@
 # What is a Coding Assistant?
 
 > **Lesson:** Course Overview → What is a coding assistant?
-> **Date:** <!-- fill in when you watch -->
+> **Date:** 2026-03-27
 
 ---
 
-## Key Concepts
+## How Coding Assistants Work
 
-<!-- Your notes here -->
+When you give a coding assistant a task (e.g., fix a bug), it follows the same process a human developer would:
 
-## How Claude Code Differs from Chat-Based Assistants
+1. **Gather context** — understand the error, find the affected files
+2. **Formulate a plan** — decide how to solve it
+3. **Take action** — edit files, run commands, verify the fix
 
-| Chat (e.g., Claude.ai) | Claude Code |
-|------------------------|-------------|
-| Paste code manually | Reads files directly |
-| No project context | Full codebase awareness |
-| One-shot responses | Multi-step tool use |
-| No execution | Runs commands, tests |
+Steps 1 and 3 require interacting with the outside world (files, commands, docs).
 
-## The Tool Use Loop
+---
 
-```
-User prompt
-   ↓
-Claude decides which tools to call
-   ↓
-Tools execute (read file, run bash, search…)
-   ↓
-Claude reasons over results
-   ↓
-Response / next tool call
-```
+## The Tool Use System
 
-## Questions / Things to Explore
+Language models alone can only process and return text — they cannot read files or run commands.
 
-- [ ] ...
+**How tool use solves this:**
+
+| Step | Who Acts |
+|------|----------|
+| You send a request | You |
+| Assistant appends tool instructions to the prompt | Assistant |
+| Model responds with a tool call (e.g. `ReadFile: main.go`) | Model |
+| Assistant executes the tool and sends results back | Assistant |
+| Model gives a final answer using the results | Model |
+
+The model never actually reads a file — it generates a formatted text request, and the assistant handles execution.
+
+---
+
+## Why Claude's Tool Use Matters
+
+Claude (Opus, Sonnet, Haiku) is particularly strong at tool use compared to other models. This gives Claude Code three key advantages:
+
+| Benefit | Why |
+|---------|-----|
+| **Tackles harder tasks** | Can chain tools together; adapts to tools it hasn't seen before |
+| **Extensible platform** | Add new tools and Claude will use them automatically |
+| **Better security** | Navigates codebases without indexing — your entire codebase isn't sent to external servers |
