@@ -1,7 +1,7 @@
 # Claude Code in Action — Study Repository
 
 > **Author:** [Mohamed Salem Ali](https://github.com/Mohamed-Salem-Ali)
-> **Course:** [Claude Code in Action](https://www.anthropic.com/academy) — Anthropic Academy
+> **Course:** [Claude Code in Action](https://anthropic.skilljar.com/claude-code-in-action) — Anthropic Academy
 > **Started:** 2026-03-27
 > **Progress:** 9 / 21 lessons (42%)
 
