@@ -1,6 +1,7 @@
 # Claude Code in Action — Study Repository
 
-> **Course:** Claude Code in Action — Anthropic Academy
+> **Author:** [Mohamed Salem Ali](https://github.com/Mohamed-Salem-Ali)
+> **Course:** [Claude Code in Action](https://www.anthropic.com/academy) — Anthropic Academy
 > **Started:** 2026-03-27
 > **Progress:** 9 / 21 lessons (42%)
 
@@ -9,6 +10,42 @@
 ## What This Repo Is
 
 A structured workspace for studying the *Claude Code in Action* course — notes, exercises, experiments, and the course project (`uigen`) all live here.
+
+If you're also taking this course, fork it and use it as your own study journal. If you're just curious about Claude Code, the `resources/` folder is a good starting point.
+
+---
+
+## Fork & Use This Repo
+
+### Option 1 — Fork (recommended if you're taking the course)
+
+1. Click **Fork** at the top-right of this GitHub page.
+2. Clone your fork:
+   ```bash
+   git clone https://github.com/Mohamed-Salem-Ali/claude-code-study.git
+   cd claude-code-study
+   ```
+3. Fill in your own notes as you watch each lesson.
+
+### Option 2 — Clone (read-only / reference)
+
+```bash
+git clone https://github.com/Mohamed-Salem-Ali/claude-code-study.git
+cd claude-code-study
+```
+
+### Setting Up the Course Project (`uigen`)
+
+The `uigen` project requires Node.js 18+ and an Anthropic API key.
+
+```bash
+cd projects/uigen
+cp .env.example .env          # then add your ANTHROPIC_API_KEY
+npm run setup                 # install deps + Prisma migrate
+npm run dev                   # starts on http://localhost:3000
+```
+
+> Without an API key the app still works — it falls back to a mock model that returns demo components.
 
 ---
 
@@ -78,3 +115,9 @@ claude -p "add error handling to src/lib/auth.ts"
 ```
 
 See `resources/cheatsheet.md` for the full command reference.
+
+---
+
+## License
+
+MIT — use freely, attribution appreciated.
