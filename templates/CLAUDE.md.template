@@ -1,0 +1,47 @@
+# Project: [Project Name]
+
+<!-- Copy this to your project root as CLAUDE.md and fill it in. -->
+
+## Overview
+
+[1-2 sentences: what this project does and who it's for]
+
+## Tech Stack
+
+- **Framework:** [e.g., Next.js 15, App Router]
+- **Language:** [e.g., TypeScript]
+- **Styling:** [e.g., Tailwind CSS v4]
+- **Database:** [e.g., Prisma + SQLite]
+- **Testing:** [e.g., Vitest]
+
+## Folder Conventions
+
+| Path | Purpose |
+|------|---------|
+| `src/app/` | Next.js App Router pages and layouts |
+| `src/components/` | React components |
+| `src/lib/` | Utilities and shared logic |
+| `src/actions/` | Server actions |
+
+## Key Commands
+
+```bash
+npm run dev       # Start dev server
+npm test          # Run test suite
+npm run lint      # Lint source files
+npm run build     # Production build
+```
+
+## Code Conventions
+
+- Components: PascalCase, one per file
+- Hooks: camelCase, prefix with `use`
+- Server actions: verb-noun format (e.g., `create-project.ts`)
+- Tests: co-located in `__tests__/` folders
+
+## Important Constraints
+
+- Never commit `.env` or secrets
+- Never modify `src/generated/` (auto-generated)
+- Run `npm test` before every commit
+- [Add any other project-specific rules]
