@@ -1,43 +1,54 @@
 # MCP Servers with Claude Code
 
 > **Lesson:** MCP servers with Claude Code
-> **Date:** <!-- fill in when you watch -->
+> **Date:** 2026-03-29
 
 ---
 
 ## What is MCP?
 
-**Model Context Protocol** — an open standard that lets Claude connect to external tools and data sources as if they were native tools.
-
-Think of MCP servers as plugins: they expose tools that Claude can call just like its built-in tools (Read, Bash, Grep, etc.).
-
-## Architecture
+**Model Context Protocol** — an open standard that lets Claude connect to external tools and data sources as plugins. They expose tools Claude can call just like its built-ins (Read, Bash, Grep, etc.).
 
 ```
-Claude Code
-   ↓  (MCP client)
-MCP Server  →  External service / tool
-               (browser, database, Slack, GitHub…)
+Claude Code  →  MCP Server  →  External tool / service
+                               (browser, database, API…)
 ```
 
-## Adding an MCP Server
+## Installing a Server
+
+Run this **in your terminal** (not inside Claude Code):
 
 ```bash
-# Add a server globally
-claude mcp add <name> -- <command>
-
-# Example: Playwright browser automation
-claude mcp add playwright -- npx @playwright/mcp@latest
-
-# List installed servers
-claude mcp list
+claude mcp add playwright npx @playwright/mcp@latest
+#            ^^^^^^^^^^^ server name
+#                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ command to start it
 ```
 
-## Config Location
+## Managing Permissions
 
-MCP servers are stored in:
-- Global: `~/.claude/settings.json` under `"mcpServers"`
-- Project: `.claude/settings.json`
+By default Claude asks permission for each MCP tool call. To pre-approve a server, add it to `.claude/settings.local.json`:
+
+```json
+{
+  "permissions": {
+    "allow": ["mcp__playwright"],
+    "deny": []
+  }
+}
+```
+
+Note the **double underscore** in `mcp__playwright`.
+
+## Practical Example: Playwright
+
+Playwright gives Claude a real browser, enabling workflows like:
+
+1. Navigate to `localhost:3000`
+2. Generate a component and inspect the visual output
+3. Update the generation prompt based on what it actually sees
+4. Test again with the improved prompt
+
+This is more powerful than code review alone — Claude sees the rendered result, not just the source.
 
 ## Popular MCP Servers
 
@@ -50,7 +61,8 @@ MCP servers are stored in:
 
 ## Notes
 
-<!-- Your notes here -->
+- MCP servers run locally or remotely and start on demand.
+- They transform Claude from a code assistant into a full toolchain partner.
 
 ## Questions / Things to Explore
 
