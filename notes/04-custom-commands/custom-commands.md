@@ -1,13 +1,24 @@
 # Custom Commands
 
 > **Lesson:** Custom commands
-> **Date:** <!-- fill in when you watch -->
+> **Date:** 2026-03-29
 
 ---
 
 ## What Are Custom Commands?
 
-Reusable slash commands (like `/review`, `/deploy`, `/test`) that you define once and run any time. They're markdown files that contain a prompt template.
+Reusable slash commands (like `/audit`, `/write_tests`) that you define once as markdown files. The filename becomes the command name.
+
+## Setup
+
+```
+.claude/
+└── commands/
+    ├── audit.md        → /audit
+    └── write_tests.md  → /write_tests
+```
+
+> After creating a new command file, **restart Claude Code** for it to be recognized.
 
 ## Where They Live
 
@@ -16,36 +27,49 @@ Reusable slash commands (like `/review`, `/deploy`, `/test`) that you define onc
 | Project-level | `.claude/commands/<name>.md` | This project only |
 | Global | `~/.claude/commands/<name>.md` | All projects |
 
-## Anatomy of a Command File
+## Example: Audit Command
 
 ```markdown
-# Review Code
-
-Review the changes in the current branch.
-Focus on:
-- Security issues
-- Performance regressions
-- Missing tests
-
-Run `git diff main` first to see what changed.
+Run `npm audit` to find vulnerable packages.
+Run `npm audit fix` to apply updates.
+Run the test suite to verify nothing broke.
 ```
 
-Save as `.claude/commands/review.md` → use as `/review`.
+Saved as `.claude/commands/audit.md` → run with `/audit`.
 
 ## Using `$ARGUMENTS`
 
-```markdown
-# Fix Issue
+The `$ARGUMENTS` placeholder lets commands accept input at run time.
 
-Fix GitHub issue #$ARGUMENTS.
-Read the issue description, find the relevant code, implement the fix, and write a test.
+```markdown
+Write comprehensive tests for: $ARGUMENTS
+
+Testing conventions:
+- Use Vitest with React Testing Library
+- Place test files in `__tests__/` next to the source file
+- Name files `[filename].test.ts(x)`
+- Use `@/` prefix for imports
+
+Cover: happy paths, edge cases, error states.
 ```
 
-Usage: `/fix 42`
+Usage: `/write_tests the use-auth.ts file in the hooks directory`
+
+Arguments can be anything — file paths, feature names, issue numbers, free-form instructions.
+
+## Key Benefits
+
+| Benefit | How |
+|---------|-----|
+| Automation | Multi-step workflows in one command |
+| Consistency | Same steps every time |
+| Project context | Bake in your conventions once |
+| Flexibility | `$ARGUMENTS` adapts to any input |
 
 ## Notes
 
-<!-- Your notes here -->
+- Commands live in `.claude/commands/` — same place as project-level context.
+- Templates in `templates/custom-commands/` in this repo are ready-to-copy starters.
 
 ## My Commands to Build
 
