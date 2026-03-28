@@ -1,43 +1,51 @@
 # Controlling Context
 
 > **Lesson:** Controlling context
-> **Date:** <!-- fill in when you watch -->
+> **Date:** 2026-03-29
 
 ---
 
-## Why Context Management Matters
+## Keyboard Techniques
 
-Claude has a finite context window. Bloated context = slower responses + more cost + degraded quality.
+### Escape — Interrupt
+Press `Escape` to stop Claude mid-response. Use this when Claude starts heading in the wrong direction or takes on too much at once. Redirect immediately rather than waiting for it to finish.
 
-## Strategies
+### Escape + `#` — Fix Recurring Mistakes
+When Claude keeps making the same error across conversations:
+1. Press `Escape` to stop the current response
+2. Press `#` to open the memory prompt and record the correct approach
+3. Continue — Claude will apply it going forward
 
-| Strategy | When to Use |
-|----------|-------------|
-| `/clear` | Start a fresh conversation mid-session |
-| `/compact` | Summarize long conversations to free space |
-| Scoped `@mentions` | Only pull in files that are relevant |
-| Small, focused tasks | Break big tasks into steps |
+### Double Escape — Rewind
+Press `Escape` twice to see your full message history and jump back to any earlier point. Useful after a long debugging detour: you keep Claude's codebase understanding but strip out the noisy back-and-forth.
+
+---
+
+## Commands
+
+| Command | What it does | When to use |
+|---------|--------------|-------------|
+| `/compact` | Summarizes conversation history, keeping key knowledge | Switching to a related next task; long conversation with valuable context |
+| `/clear` | Wipes conversation history completely | Switching to an unrelated task; current context would confuse Claude |
+
+**Rule of thumb:** compact = keep the knowledge, lose the noise. clear = full reset.
+
+---
 
 ## What Eats Context Fast
 
-- Large files (e.g., `package-lock.json`, generated code)
+- Large files (`package-lock.json`, generated code)
 - Verbose tool output (long test runs, stack traces)
-- Repeating the same context every turn
+- Debugging back-and-forth that's no longer relevant
 
-## Best Practice Pattern
-
-```
-1. Start with CLAUDE.md (permanent context)
-2. @mention only the files relevant to this task
-3. After big tool output → /compact before next prompt
-4. One logical task per conversation
-```
+---
 
 ## Notes
 
-<!-- Your notes here -->
+- These aren't just convenience features — they're essential for long sessions.
+- Combining double-Escape rewind with `/compact` on the trimmed conversation is a powerful reset pattern.
 
 ## Questions / Things to Explore
 
-- [ ] What does /compact actually preserve vs. drop?
+- [ ] What exactly does `/compact` preserve vs. drop?
 - [ ] Is there a way to see current token usage?
